@@ -1,0 +1,113 @@
+<html>
+<head>
+ <title>POMODORO</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./bootstrap-4.5.2-dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Delius+Unicase&display=swap" rel="stylesheet">  
+    <!--CSS-->
+
+<style type="text/css">
+  .line{
+    width: 100%;
+    height: 2px;
+    background:#50F974; 
+  }
+   h1 {
+      color: white;
+   }
+   .reloj {
+      width: 40%;
+      height: 40%;
+      border-radius: 5px;
+      background: #50F974; 
+      margin-left: 80;
+   }
+   #cuenta {
+      color: white;
+      padding-left: 28;
+
+   }
+</style>
+<script>
+   var timeLimit = 25; //tiempo en minutos
+   var conteo = new Date(timeLimit * 60000);
+
+   function inicializar(){
+      document.getElementById('cuenta').childNodes[0].nodeValue = 
+                  conteo.getMinutes() + ":" + conteo.getSeconds();
+   }
+
+   function cuenta(){
+      intervaloRegresivo = setInterval("regresiva()", 1000);
+   }
+
+   function regresiva(){
+      if(conteo.getTime() > 0){
+         conteo.setTime(conteo.getTime() - 1000);
+      }else{
+         clearInterval(intervaloRegresivo);
+         alert("Fin");
+      }
+
+      document.getElementById('cuenta').childNodes[0].nodeValue = 
+                  conteo.getMinutes() + ":" + conteo.getSeconds();
+   }
+
+   onload = inicializar;
+</script>
+
+</head>
+
+<body>
+  <div class="line"></div>
+   <nav class="navbar navbar-expand-lg navbar-light bg-success">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><h1 class="shadow-lg p-3 mb-5 bg-body rounded">Metodologia Pomodoro</h1></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+ 
+  </div>
+</nav>
+
+
+<div class="container">
+
+<div class="card center mt-5 mb-5 offset-4 shadow-lg rounded" style="width: 18rem;">
+    <div class="reloj mt-2">
+      <h3>
+<div id="cuenta">
+  
+   0
+      </div>
+  </div>
+</h3>
+
+
+ 
+<input type="button" class="btn btn-success w-4 mt-2" value="Iniciar Descanso" onclick="cuenta()">
+  <div class="card-body">
+    <h5 class="card-title">Descripcion Pomodoro</h5>
+    <p class="card-text">La Técnica Pomodoro es un método para mejorar la administración del tiempo dedicado a una actividad. ... ​ Se basa en usar un temporizador para dividir el tiempo en intervalos fijos, llamados pomodoros, de 25 minutos de actividad, seguidos de 5 minutos de descanso, con pausas más largas cada cuatro pomodoros..</p>
+   
+           </div>
+      
+     </div>
+
+  </div>
+
+
+ <footer class="bg-success">
+      <div class="container">
+        <div class="row py-3">
+          <div class="col-12 text-center">
+              <p class="mb-0 bg-white shadow-lg p-3 mb-5 bg-body rounded">
+        Alberto de la cruz &  grupo beta Todos los derechos reservados
+      </p>
+          </div>
+        </div>
+      </div>
+    
+    </footer>
+</body>
+</html>
